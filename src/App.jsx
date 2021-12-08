@@ -6,15 +6,16 @@ import Headline from './Headline';
 import Todo from './Todo';
 
 function App() {
-  let initialTodos = [
-    { title: 'Milch kaufen', color: 'yellow' }, // 0
-    { title: 'Wohnung putzen', color: 'blue' }, // 1
-    { title: 'React Doku lesen', color: 'green' },
-    { title: 'Katze füttern', color: 'red' },
-    { title: 'Glühwein im Glühwein Express trinken', color: 'red' },
-  ];
+  const [todos, setTodos] = useState([]);
 
-  const [todos, setTodos] = useState(initialTodos);
+  useEffect(() => {
+    setTodos(JSON.parse(localStorage.getItem('todos')) ?? []);
+  }, []); // On first render: load local storage items if possible
+
+  useEffect(
+    () => localStorage.setItem('todos', JSON.stringify(todos)),
+    [todos] // Dependency Array
+  );
 
   const todoItems = todos.map((todo, index) => (
     <Todo key={index} title={todo.title} color={todo.color} />
