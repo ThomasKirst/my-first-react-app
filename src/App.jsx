@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 import Form from './Form';
 import Headline from './Headline';
-import Todo from './Todo';
+import TodoList from './TodoList';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -17,10 +17,6 @@ function App() {
     [todos] // Dependency Array
   );
 
-  const todoItems = todos.map((todo, index) => (
-    <Todo key={index} title={todo.title} color={todo.color} />
-  ));
-
   function addTodo(newTodo) {
     setTodos([...todos, newTodo]);
   }
@@ -28,10 +24,8 @@ function App() {
   return (
     <div className="App">
       <Headline title="I am your shopping list" />
-
       <Form onAddTodo={addTodo} />
-
-      <ul>{todoItems}</ul>
+      <TodoList todos={todos} />
     </div>
   );
 }
