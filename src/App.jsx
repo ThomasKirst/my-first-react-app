@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Button from './Button';
+
+import Form from './Form';
 import Headline from './Headline';
 import Todo from './Todo';
 
@@ -19,21 +20,7 @@ function App() {
     <Todo key={index} title={todo.title} color={todo.color} />
   ));
 
-  function addTodo(event) {
-    // Formular nicht abschicken (Kein Server, der die Daten aufnimmt, mir machen etwas lokal (im Browser) damit)
-    event.preventDefault();
-
-    // Event wurde im Formular ausgelöst, event.target (auslösende Element)
-    const form = event.target;
-    const inputField = form.color;
-    const inputValue = inputField.value;
-
-    // deklariert und initialisiert mit einem Objekt
-    const newTodo = {
-      title: inputValue,
-      color: 'gray',
-    };
-
+  function addTodo(newTodo) {
     setTodos([...todos, newTodo]);
   }
 
@@ -41,10 +28,7 @@ function App() {
     <div className="App">
       <Headline title="I am your shopping list" />
 
-      <form onSubmit={addTodo}>
-        <input type="text" name="todo" placeholder="Add a todo …" />
-        <Button text="Submit" />
-      </form>
+      <Form onAddTodo={addTodo} />
 
       <ul>{todoItems}</ul>
     </div>
