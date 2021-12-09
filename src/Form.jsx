@@ -1,7 +1,7 @@
 import Button from './Button';
 
 export default function Form({ onAddTodo }) {
-  function onFormSubmit(event) {
+  function handleFormSubmit(event) {
     // Formular nicht abschicken (Kein Server, der die Daten aufnimmt, mir machen etwas lokal (im Browser) damit)
     event.preventDefault();
 
@@ -20,7 +20,7 @@ export default function Form({ onAddTodo }) {
   }
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form onSubmit={handleFormSubmit}>
       <input type="text" name="todo" placeholder="Add a todo …" />
       <Button text="Submit" />
     </form>
