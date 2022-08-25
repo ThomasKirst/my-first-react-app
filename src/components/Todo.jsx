@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './Todo.css';
+import { useState } from "react";
+import "./Todo.css";
 
 // Wird für jedes einzelne Todo ausgeführt
 function Todo({ color, title }) {
@@ -14,12 +14,13 @@ function Todo({ color, title }) {
 
   // isDone ist ein bool'scher Wert,
   // er muss nicht explizit mit === true verglichen werden
-  const listItemLook = isDone ? 'strike-through' : '';
+  const listItemLook = isDone ? "strike-through" : "";
 
   return (
     <li style={{ color: color }}>
       <label className={listItemLook}>
-        <input type="checkbox" onChange={markAsDone} /> {title}
+        <input className="Todo__input" type="checkbox" onChange={markAsDone} />{" "}
+        {title}
       </label>
     </li>
   );

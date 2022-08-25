@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-import Form from './Form';
-import Headline from './Headline';
-import Todo from './Todo';
+import Form from "./components/Form";
+import Headline from "./components/Headline";
+import Todo from "./components/Todo";
 
 function App() {
-  let initialTodos = [
-    { title: 'Milch kaufen', color: 'yellow' }, // 0
-    { title: 'Wohnung putzen', color: 'blue' }, // 1
-    { title: 'React Doku lesen', color: 'green' },
-    { title: 'Katze füttern', color: 'red' },
-    { title: 'Glühwein im Glühwein Express trinken', color: 'red' },
+  const initialTodos = [
+    { title: "Milch kaufen", color: "goldenrod" }, // 0
+    { title: "Wohnung putzen", color: "blue" }, // 1
+    { title: "React Doku lesen", color: "green" },
+    { title: "Katze füttern", color: "red" },
+    { title: "Glühwein im Glühwein Express trinken", color: "red" },
   ];
 
   const [todos, setTodos] = useState(initialTodos);
@@ -30,7 +30,7 @@ function App() {
 
       <Form onAddTodo={addTodo} />
 
-      <ul>{todoItems}</ul>
+      <ul className="App__list">{todoItems}</ul>
     </div>
   );
 }

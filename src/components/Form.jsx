@@ -1,4 +1,5 @@
-import Button from './Button';
+import "./Form.css";
+import Button from "./Button";
 
 export default function Form({ onAddTodo }) {
   function handleFormSubmit(event) {
@@ -13,15 +14,20 @@ export default function Form({ onAddTodo }) {
     // deklariert und initialisiert mit einem Objekt
     const newTodo = {
       title: inputValue,
-      color: 'gray',
+      color: "gray",
     };
 
     onAddTodo(newTodo);
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input type="text" name="todo" placeholder="Add a todo …" />
+    <form className="Form" onSubmit={handleFormSubmit}>
+      <input
+        className="Form__input"
+        type="text"
+        name="todo"
+        placeholder="Add a todo …"
+      />
       <Button text="Submit" />
     </form>
   );
